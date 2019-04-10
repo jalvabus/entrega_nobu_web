@@ -1,0 +1,148 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Parte Informativo - 55263</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ guardiaDelDia.guardia }} <img src="assets/brand/g_{{ guardiaDelDia.guardia }}.png"
+              width="5%"></h4>
+        </div>
+        <div class="card-body p-4">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-3 font-weight-bold">Datos Generales</h4>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">H. Reporte</label>
+                      <input type="time" class="form-control" placeholder="H. Reporte"  [(ngModel)]="reporte.hora_reporte">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">H. Salida</label>
+                      <input type="time" class="form-control" placeholder="H. Salida"  [(ngModel)]="reporte.hora_salida">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">H. Llegada</label>
+                      <input type="time" class="form-control" placeholder="H. Llegada"  [(ngModel)]="reporte.hora_llegada">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Unidad (Placa): </label>
+                      <input type="text" class="form-control" disabled value="{{ unidadVulcano.placa }}" [(ngModel)]="reporte.unidad">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Conductor</label>
+                      <input type="text" class="form-control" placeholder="Conductor" disabled value="{{ vulcanoMandoUnidad.nombre }} {{ vulcanoMandoUnidad.apellido_paterno }}" [(ngModel)]="reporte.conductor">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Km. Salida</label>
+                      <input type="number" class="form-control" placeholder="Km. Salida"  [(ngModel)]="reporte.km_salida">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Km. Llegada</label>
+                      <input type="number" class="form-control" placeholder="Km. Llegada"  [(ngModel)]="reporte.km_llegada">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Tipo de Servicio</label>
+                      <select class="form-control"  [(ngModel)]="reporte.tipo_servicio">
+                        <option>Selecciona</option>
+                        <option value=""></option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <h4 class="mb-3 font-weight-bold">Datos Servicio</h4>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Reporta</label>
+                      <input type="text" class="form-control" placeholder="Reporta" disabled value="{{ vulcano.nombre }} {{ vulcano.apellido_paterno }}" [(ngModel)]="reporte.vulcano">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Telefono</label>
+                      <input type="number" class="form-control" placeholder="Telefono"  [(ngModel)]="reporte.telefono">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Calle</label>
+                      <input type="text" class="form-control" placeholder="Calle"  [(ngModel)]="reporte.calle">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Colonia</label>
+                      <input type="text" class="form-control" placeholder="Colonia"  [(ngModel)]="reporte.colonia">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">No. Interior</label>
+                      <input type="number" class="form-control" placeholder="No. Interior"  [(ngModel)]="reporte.no_interior">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">No. Exterior</label>
+                      <input type="number" class="form-control" placeholder="No. Exterior"  [(ngModel)]="reporte.no_exterior">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Manzana</label>
+                      <input type="text" class="form-control" placeholder="Manzana"  [(ngModel)]="reporte.manzada">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Comentarios</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"  [(ngModel)]="reporte.comentarios"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <button *ngIf="!cargando" class="btn btn-danger btn-block" (click)="generarReporte()">Generar Parte</button>
+            <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+              <img src="assets/img/spinner.gif" width="20%" height="20%">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- /.container-fluid -->

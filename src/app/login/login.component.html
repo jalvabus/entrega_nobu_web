@@ -1,0 +1,63 @@
+<div class="container d-flex justify-content-center">
+  <div class="card" style="width: 25rem; border: none;">
+    <div class="card-body">
+      <h1 class="card-title text-title text-center p-4">
+        <img src="assets/brand/logo.png" alt="">
+      </h1>
+      <h1 class="card-subtitle mb-2 text-muted text-center p-4">Inicia Sesión</h1>
+      <div class="form-group">
+        <input type="text" class="form-control bg-light" placeholder="Usuario" [(ngModel)]="form.usuario">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control bg-light" (keyup)="enterLogin($event)" placeholder="Contraseña"
+          [(ngModel)]="form.password">
+      </div>
+      <div class="form-group d-flex justify-content-between">
+        <label for="">Recuerdame</label>
+        <div class="material-switch pull-right">
+          <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" />
+          <label for="someSwitchOptionDefault" class="label-default"></label>
+        </div>
+      </div>
+      <div *ngIf="!cargando" class="form-group">
+        <button class="btn btn-large bg-light btn-block rounder" (click)="login()">INICIAR SESION</button>
+      </div>
+      <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+        <img src="assets/img/spinner.gif" width="20%" height="20%">
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="app flex-row align-items-center mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-block">
+              <h1>Iniciar sesión</h1>
+              <p class="text-muted">Ingresar a su cuenta de usuario</p>
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]='form.usuario'>
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]='form.password'>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary px-4" (click)='login()'>Iniciar sesión</button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary px-4" (click)='logout()'>Cerrar sesión</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

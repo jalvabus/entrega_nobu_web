@@ -1,0 +1,27 @@
+.border-left-Roja {
+    border-left: .25rem solid #e74a3b!important;
+}
+
+.border-left-Verde {
+    border-left: .25rem solid #36b9cc!important;
+}
+
+.border-left-Azul {
+    border-left: .25rem solid #4e73df!important;
+}
+
+.border-left-Amarilla {
+    border-left: .25rem solid yellow!important;
+}
+
+.border-left-Negra {
+    border-left: .25rem solid black!important;
+}
+
+.border-left-Blanca {
+    border-left: .25rem solid white!important;
+}
+
+.border-left-Naranja {
+    border-left: .25rem solid orange!important;
+}

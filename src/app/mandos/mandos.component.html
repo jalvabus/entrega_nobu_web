@@ -1,0 +1,48 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Asignar Vulcano al Mando de Unidad</h4>
+        </div>
+        <div class="card-body p-4" *ngIf="paseListaCompleto && !mandosAsignados">
+          <div *ngIf="loaderMandos" class="card-body p-4 text-center" style="padding-top: 10px; padding-bottom: 10px;">
+            <img src="assets/img/loader.gif" width="10%" height="10%">
+          </div>
+
+          <table class="table" *ngIf="!loaderMandos">
+            <thead>
+              <tr>
+                <th>Unidad</th>
+                <th>Vulcano al mando</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let unidad of unidades">
+                <th> {{ unidad.numero_economico }} - {{ unidad.placa }}</th>
+                <th>
+                  <select name="vulcano" class="form-control form-control-sm" (change)="asignarMandoUnidad($event.target.value, unidad._id)">
+                    <option value="Selecciona">Selecciona</option>
+                    <option *ngFor="let vulcano of vulcanos" value="{{vulcano._id}}">{{ vulcano.nombre }} {{
+                      vulcano.apellido_paterno }}</option>
+                  </select>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+          <button *ngIf="!loaderMandos" class="btn btn-danger btn-block" (click)="completarAsignacion()">Asignar</button>
+        </div>
+        <div class="card-body p-4 text-center" *ngIf="!paseListaCompleto">
+          <h4 class="m-3 font-weight-bold">Debe completar el pase de lista.</h4>
+        </div>
+        <div class="card-body p-4 text-center" *ngIf="mandosAsignados">
+          <h4 class="m-3 font-weight-bold">Se han asignado los mandos.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

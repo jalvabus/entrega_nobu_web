@@ -1,0 +1,85 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Nueva Comision</h4>
+        </div>
+        <div class="card-body p-4">
+
+          <form>
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="comision" class="form-control" [(ngModel)]="form.comision" required placeholder="Comision">
+            </div>
+
+            <button class="btn btn-danger btn-block" (click)="registrarComision()">Registrar comision</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Comisiones</h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table tale-sm">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let comision of comisiones">
+                <th scope="row">{{ comision.comision }}</th>
+                <td>
+                  <i class="ml-2 mb-2 far fa-edit" data-toggle="modal" data-target="#exampleModal" (click)="seleccionarComision(comision)"></i>
+                  <i class="ml-2 mb-2 far fa-trash-alt" (click)="elminarComision(comision)"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Comision</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="comisionUpdate" class="form-control" [(ngModel)]="comisionUpdate.comision"
+              required>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-6">
+              <button type="button" class="btn btn-danger btn-block" (click)="actualizarComision()" data-dismiss="modal">Guardar Cambios</button>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,252 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+
+      <img src="assets/brand/logo_company.png" width="15%">
+
+      <div class="sidebar-brand-text mx-3 text-white">NOBU</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading" *ngIf="vulcano.rol === 'jefe-estacion'">
+      Administración
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+        aria-controls="collapseOne">
+        <i class="fas fa-users"></i>
+        <span>Elementos</span>
+      </a>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/vulcanos']">Administrar</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/pase-lista']">Pase de lista</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/asignar-comisiones']">Asignar comisiones</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-users"></i>
+        <span>Unidades</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/unidades']">Administrar</a>
+          <a class="collapse-item" [routerLink]="['/jefe-servicio/asignacion-unidad']">Asignar unidades</a>
+        </div>
+      </div>
+    </li>
+
+
+
+    <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+        aria-controls="collapseThree">
+        <i class="fas fa-users"></i>
+        <span>Modulo 18</span>
+      </a>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/comisiones']">Comisiones</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/estaciones']">Estaciones</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/grados']">Grados</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/guardias']">Guardias</a>
+          <a class="collapse-item" [routerLink]="['/jefe-estacion/mandos']">Mandos</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" *ngIf="vulcano.rol === 'jefe-estacion'">
+    <!-- Divider -->
+    <hr class="sidebar-divider" *ngIf="vulcano.rol === 'jefe-estacion'">
+
+    <div class="sidebar-heading" *ngIf="vulcano.rol === 'jefe-estacion'">
+        PARTES
+      </div>
+      <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+        <a class="nav-link" [routerLink]="['/jefe-estacion/historial-emergencias']">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Partes</span></a>
+      </li>
+
+    <div class="sidebar-heading" *ngIf="vulcano.rol === 'jefe-estacion'">
+      Alertas sCiudadados
+    </div>
+    <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+      <a class="nav-link" [routerLink]="['/jefe-estacion/alertas']">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Alertas</span></a>
+    </li>
+
+    <div class="sidebar-heading" *ngIf="vulcano.rol === 'jefe-estacion'">
+      Avisos Generales
+    </div>
+    <li class="nav-item" *ngIf="vulcano.rol === 'jefe-estacion'">
+      <a class="nav-link" [routerLink]="['/jefe-estacion/avisos']">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Avisos</span></a>
+    </li>
+
+    <div class="sidebar-heading" *ngIf="vulcano.rol === 'vulcano'">
+      Vulcano
+    </div>
+    <li class="nav-item" *ngIf="vulcano.rol === 'vulcano'">
+      <a class="nav-link" [routerLink]="['/vulcano']">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Inicio</span></a>
+    </li>
+    <li class="nav-item" *ngIf="vulcano.rol === 'vulcano'">
+      <a class="nav-link" [routerLink]="['/vulcano/perfil']">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Mi Perfil</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" *ngIf="vulcano.rol === 'vulcano'">
+    <!-- Divider -->
+    <hr class="sidebar-divider" *ngIf="vulcano.rol === 'vulcano'">
+
+    <li class="nav-item" *ngIf="vulcano.rol === 'vulcano'">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+        aria-controls="collapseOne">
+        <i class="fas fa-file"></i>
+        <span>Documentos</span>
+      </a>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" [routerLink]="['/vulcano/historial-emergencias']">Historial</a>
+          <a class="collapse-item" [routerLink]="['/vulcano/parte-informativo']">Parte Inforamtivo</a>
+          <a class="collapse-item" [routerLink]="['/vulcano/kilometraje']">Kilometraje</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <!-- <li class="nav-item">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-users"></i>
+      <span>Usuarios</span>
+  </li>-->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+  </ul>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+          <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+
+          <!-- Nav Item - Alerts -->
+          <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bell fa-fw"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter">{{ notificacionesTotal }}</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <h6 class="dropdown-header">
+                Alerts Center
+              </h6>
+              <a class="dropdown-item d-flex align-items-center" href="#" *ngFor="let alerta of alertas">
+                <div class="mr-3">
+                  <div class="icon-circle bg-primary">
+                    <i class="fas fa-user-alt text-white"></i>
+                  </div>
+                </div>
+                <div>
+                  <div class="small text-gray-500">{{ alerta.fecha | date : 'dd/MM/yyyy hh:mm' }}</div>
+                  <span class="font-weight-bold">{{ alerta.usuario.email }}</span>
+                </div>
+              </a>
+              <a class="dropdown-item text-center small text-gray-500" [routerLink]="['/jefe-estacion/alertas']">Ver
+                Todas </a>
+            </div>
+          </li>
+
+          <div class="topbar-divider d-none d-sm-block"></div>
+
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{vulcano.nombre}} {{
+                vulcano.apellido_paterno}}</span>
+              <img class="img-profile rounded-circle" src="assets/brand/user_admin.png">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guardia Roja</span>
+                <img class="mb-1" width="7%" src="brand/g_roja.png"> -->
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Mi perfil
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="logout()" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Salir
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+      </nav>
+      <!-- End of Topbar -->
+
+      <router-outlet></router-outlet>
+
+    </div>
+    <!-- End of Main Content -->
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; CodeLabs 2019</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->

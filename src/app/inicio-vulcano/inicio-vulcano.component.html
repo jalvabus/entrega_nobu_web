@@ -1,0 +1,87 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-xl-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-body p-4">
+          <div class="row no-gutters align-items-center">
+            <div class="col-2">
+              <img src="assets/brand/user_{{ vulcano.guardia.guardia }}.png" width="100%">
+            </div>
+            <div class="col ml-4">
+              <h4>Vulcano {{ vulcano.numero_empleado }}</h4>
+              <h4>{{ vulcano.grado.grado }}</h4>
+              <h4>Guardia {{ vulcano.guardia.guardia }} <img src="assets/brand/g_{{ vulcano.guardia.guardia }}.png"
+                  width="2%"></h4>
+              <h1 style="display:inline;" class="font-weight-bold">{{ vulcano.nombre }} {{ vulcano.apellido_paterno }}
+                {{ vulcano.apellido_materno }}</h1><i class="ml-2 mb-2 far fa-edit"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-xl-6">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Unidad Perteneciente</h4>
+        </div>
+        <div class="card-body p-4">
+          <div class="alert alert-primary d-flex justify-content-center" role="alert"> <span class="font-weight-bold">
+              Placa: {{ unidadVulcano.placa }} Numero Economico: {{
+              unidadVulcano.numero_economico }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Vulcano al Mando de la Unicac</h4>
+        </div>
+        <div class="card-body p-4">
+          <div class="alert alert-danger d-flex justify-content-center" role="alert">
+            <span class="font-weight-bold"> {{ vulcanoMandoUnidad.nombre }} {{ vulcanoMandoUnidad.apellido_paterno }}
+              {{ vulcanoMandoUnidad.apellido_materno }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 pt-3">
+        <div class="card shadow h-100 py-2">
+          <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold">Comision Asignada</h4>
+          </div>
+          <div class="card-body p-4">
+            <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="comision">
+              <span class="font-weight-bold"> {{ comision.comision }}</span>
+            </div>
+            <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="!comision">
+                <span class="font-weight-bold"> No tienes comision asignada.</span>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-xl-6 pt-3">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Avisos</h4>
+        </div>
+        <div class="card-body p-4">
+          <div class="alert alert-warning d-flex justify-content-between" role="alert" *ngFor="let aviso of avisos">
+            {{ aviso.aviso }}
+            <span class="font-weight-bold"> {{ aviso.administrador.nombre }} {{ aviso.administrador.apellido_paterno }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,93 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-4">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Nueva Estacion</h4>
+        </div>
+        <div class="card-body p-4">
+
+          <form>
+            <div class="form-group">
+              <label for="">Estacion</label>
+              <input name="estacion" type="text" class="form-control" [(ngModel)]="estacion.estacion" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="">Direccion</label>
+              <input name="direccion" type="text" class="form-control" [(ngModel)]="estacion.direccion" placeholder="Direcciom">
+            </div>
+            <button class="btn btn-danger btn-block" (click)="registrarEstacion()">Registrar Estacion</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold">Estaciones</h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table tale-sm">
+            <thead>
+              <tr>
+                <th>Estacion</th>
+                <th>Direccion</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let estacion of estaciones">
+                <td>{{ estacion.estacion }}</td>
+                <td>{{estacion.direccion}}</td>
+                <td>
+                  <i class="ml-2 mb-2 far fa-edit" data-toggle="modal" data-target="#exampleModal" (click)="seleccionarEstacion(estacion)"></i>
+                  <i class="ml-2 mb-2 far fa-trash-alt" (click)="eliminarEstacion(estacion)"></i>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Estacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="">Estacion</label>
+            <input name="estacion" type="text" class="form-control" [(ngModel)]="estacionUpdate.estacion" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="">Direccion</label>
+            <input name="direccion" type="text" class="form-control" [(ngModel)]="estacionUpdate.direccion" placeholder="Direcciom">
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-6">
+              <button type="button" class="btn btn-danger btn-block" (click)="actualozarEstacion()" data-dismiss="modal">Guardar
+                Cambios</button>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

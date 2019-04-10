@@ -1,0 +1,91 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-6">
+          <button class="btn btn-danger btn-block" (click)="activateasignacion()">Asignacion de Unidades</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-danger btn-block" (click)="activatehistorial()">Historial</button>
+        </div>
+      </div>
+
+  <div class="row mb-3" *ngIf="viewAsignacion">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Asignacion de Unidades {{ fecha | date : 'dd/MM/yyyy'}}</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ guardiaDelDia.guardia }} <img src="assets/brand/g_{{ guardiaDelDia.guardia }}.png"
+              width="5%"></h4>
+        </div>
+        <div class="card-body p-4" *ngIf="!asignacionesCompletadas">
+          <div *ngIf="loaderAsignacion" class="text-center" style="padding-top: 10px; padding-bottom: 10px;">
+            <img src="assets/img/loader.gif" width="10%" height="10%">
+          </div>
+
+          <table *ngIf="!loaderAsignacion" class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vulcano of vulcanos">
+                <th scope="row">{{ vulcano.numero_empleado }}</th>
+                <td>{{ vulcano.nombre }} {{ vulcano.apellido_paterno }} {{ vulcano.apellido_materno }}</td>
+                <td>
+                  <select name="unidad" class="form-control form-control-sm" (change)="asignarUnidad($event.target.value, vulcano._id)">
+                    <option value="Selecciona">Selecciona</option>
+                    <option *ngFor="let unidad of unidades" value="{{unidad._id}}">{{ unidad.numero_economico }} - {{
+                      unidad.placa }}</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button *ngIf="!loaderAsignacion" class="btn btn-danger btn-block" (click)="reload()">Asignar</button>
+        </div>
+        <div class="card-body p-4 text-center" *ngIf="asignacionesCompletadas">
+          <h4 class="m-3 font-weight-bold">Se han asignado las unidades.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3" *ngIf="viewHistorial">
+      <h1>Historial mensual</h1>
+    <div class="col-12" *ngFor="let unidad of asignaciones">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Asignacion de Unidades {{ unidad.fecha | date:'dd/MM/yyyy' }}</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ unidad.guardia.guardia }} <img src="assets/brand/g_{{ unidad.guardia.guardia }}.png" width="5%"></h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vulcano of unidad.datosVulcano">
+                <th scope="row"> {{ vulcano.vulcano.numero_empleado }}</th>
+                <td>{{ vulcano.vulcano.nombre }} {{ vulcano.vulcano.apellido_paterno }} {{
+                  vulcano.vulcano.apellido_materno }}</td>
+                <td *ngIf="vulcano.unidad">{{ vulcano.unidad.numero_economico }} - {{ vulcano.unidad.placa }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<!-- /.container-fluid -->

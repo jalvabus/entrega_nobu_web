@@ -1,0 +1,44 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Historial de Emergencias - 09/02/2019</h4>
+          <h4 class="m-0 font-weight-bold">Guardia Azul <img src="brand/g_azul.png" width="5%"></h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Tipo de Servicio</th>
+                <th scope="col">Conductor</th>
+                <th scope="col">Hr. Salida</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let parte of partes">
+                <th scope="row">000{{ parte.folio }}</th>
+                <td>{{ parte.tipo_servicio }}</td>
+                <td>{{ parte.operador }}</td>
+                <td>{{ parte.hr_salida }}</td>
+                <td>
+                  <button class="btn btn-default" (click)="verReporte(parte)">
+                    <i class="fa fa-list"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-danger btn-block" (click)="cargar()">Cargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- /.container-fluid -->

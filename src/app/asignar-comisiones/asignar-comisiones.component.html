@@ -1,0 +1,87 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row mb-3" *ngIf="!historial">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Comisiones {{ fecha | date: 'dd/MM/yyyy' }}</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ guardiaDelDia.guardia }} <img src="assets/brand/g_{{ guardiaDelDia.guardia }}.png" width="5%"></h4>
+        </div>
+        <div class="card-body p-4" *ngIf="!comisionesCompletadas">
+          <div *ngIf="loaderComisiones" class="card-body p-4 text-center" style="padding-top: 10px; padding-bottom: 10px;">
+            <img src="assets/img/loader.gif" width="10%" height="10%">
+          </div>
+          <table class="table table-sm" *ngIf="!loaderComisiones">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Comision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vulcano of vulcanos">
+                <th scope="row">{{ vulcano.numero_empleado }}</th>
+                <td>{{ vulcano.nombre }} {{ vulcano.apellido_paterno }} {{ vulcano.apellido_materno }}</td>
+                <td>
+                  <select name="unidad" class="form-control form-control-sm" (change)="asignarComision($event.target.value, vulcano._id)">
+                    <option value="Selecciona">Selecciona</option>
+                    <option *ngFor="let comision of comisiones" value="{{comision._id}}">{{ comision.comision }}</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button *ngIf="!loaderComisiones" class="btn btn-danger btn-block" (click)="guardarComisiones()">Asignar</button>
+        </div>
+        <div class="card-body p-4 text-center" *ngIf="comisionesCompletadas">
+          <h4 class="m-3 font-weight-bold">Se han asignado las comisiones.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-3" *ngIf="historial">
+    <div class="col-12">
+        <h1>Historial mensual</h1>
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Comisiones 01/02/2019</h4>
+          <h4 class="m-0 font-weight-bold">Guardia Azul <img src="assets/brand/g_azul.png" width="5%"></h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Comision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">55234</th>
+                <td>Juan Ivan Villa</td>
+                <td>Comision</td>
+              </tr>
+              <tr>
+                <th scope="row">45676</th>
+                <td>Oscar Beltran Lirios</td>
+                <td>Comision</td>
+              </tr>
+              <tr>
+                <th scope="row">45676</th>
+                <td>Laura Reyes Luz</td>
+                <td>Comision</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

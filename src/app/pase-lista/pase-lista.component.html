@@ -1,0 +1,89 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <button class="btn btn-danger btn-block" (click)="activatepaseLista()">Pase de Lista Diario</button>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-danger btn-block" (click)="activatehistorial()">Historial</button>
+    </div>
+  </div>
+
+  <div class="row mb-3" *ngIf="viewpaseLista">
+    <div class="col-12">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Pase de Lista {{ fecha | date:'dd/MM/yyyy'}}</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ guardiaDelDia.guardia }} <img src="assets/brand/g_{{ guardiaDelDia.guardia }}.png"
+              width="5%"></h4>
+        </div>
+        <div class="card-body p-4" *ngIf="!paseListaHoyCompletado">
+          <div *ngIf="loaderPaseLista" class="text-center" style="padding-top: 10px; padding-bottom: 10px;">
+            <img src="assets/img/loader.gif" width="10%" height="10%">
+          </div>
+          <table *ngIf="!loaderPaseLista" class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Presente</th>
+                <th scope="col">Ausente</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vulcano of vulcanos">
+                <th scope="row">{{ vulcano.numero_empleado }}</th>
+                <td>{{ vulcano.nombre }} {{vulcano.apellido_paterno }}</td>
+                <td><input name="radio{{vulcano._id}}" class="form-check-input ml-3" type="radio" (click)="paseLista(vulcano, 'true')"></td>
+                <td><input name="radio{{vulcano._id}}" class="form-check-input ml-3" type="radio" (click)="paseLista(vulcano, 'false')"></td>
+              </tr>
+            </tbody>
+          </table>
+          <button *ngIf="!loaderPaseLista" class="btn btn-danger btn-block" (click)="paseListaCompleto()">Finalizar</button>
+        </div>
+        <div class="card-body p-4 text-center" *ngIf="paseListaHoyCompletado">
+          <h4 class="m-3 font-weight-bold">Pase de Lista Completo</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3" *ngIf="viewhistorial">
+    <h1>Historial Diario</h1>
+    <div class="col-12 mb-3" *ngFor="let lista of listas">
+      <div class="card shadow h-100 py-2">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h4 class="m-0 font-weight-bold">Pase de Lista {{ lista.fecha | date:'dd/MM/yyyy' }}</h4>
+          <h4 class="m-0 font-weight-bold">Guardia {{ lista.guardia.guardia }} <img src="assets/brand/g_{{ lista.guardia.guardia }}.png"
+              width="5%"></h4>
+        </div>
+        <div class="card-body p-4">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No. empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Asistencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vulcano of lista.datosVulcano">
+                <th scope="row">{{ vulcano.vulcano.clave }}</th>
+                <td>{{ vulcano.vulcano.nombre }} {{ vulcano.vulcano.apellido_paterno }}</td>
+                <td *ngIf="vulcano.asistencia">
+                  Presente
+                </td>
+                <td *ngIf="!vulcano.asistencia">
+                  Ausente
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
